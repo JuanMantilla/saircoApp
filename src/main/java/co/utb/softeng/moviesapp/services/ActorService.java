@@ -6,20 +6,23 @@
 package co.utb.softeng.moviesapp.services;
 
 import co.utb.softeng.moviesapp.entities.Actor;
+import co.utb.softeng.moviesapp.entities.Movie;
 import java.util.List;
 
 /**
  *
- * @author William
+ * @author Juan Mantilla
  */
 public interface ActorService {
     
     public List<Actor> getAllActors();
     public Actor getActorById(Long id);
     public List<Actor> getActorByName(String name);
-    public List<Actor> getActorByMovieName(String movieName);
-    public void saveOrUpdateActor(Actor actor);
-    public void deleteActor(Long id);
+    public List<Actor> getActorByMovieId(Long actorId);
+    public List<Actor> getActorByMovieName(String actorName);
+    public void saveOrUpdateActor(Actor movie);
     
+    public Actor addMoviesToActor(List<Movie> movies, Long actorId);
+    public void deleteActor(Long id);
     
 }

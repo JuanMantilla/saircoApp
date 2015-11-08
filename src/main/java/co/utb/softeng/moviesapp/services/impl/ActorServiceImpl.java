@@ -7,6 +7,7 @@ package co.utb.softeng.moviesapp.services.impl;
 
 import co.utb.softeng.moviesapp.dao.ActorDAO;
 import co.utb.softeng.moviesapp.entities.Actor;
+import co.utb.softeng.moviesapp.entities.Movie;
 import co.utb.softeng.moviesapp.services.ActorService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,28 +16,34 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
- * @author William
- */
+ * @author Juan Mantilla
+ * 
+*/
 @Service
 @Transactional
 public class ActorServiceImpl implements ActorService{
     
     @Autowired
-    ActorDAO actorDAO;
+    private ActorDAO actorDAO;
 
-    @Override
     public List<Actor> getAllActors() {
         return actorDAO.getAllActors(false);
     }
 
-    @Override
     public Actor getActorById(Long id) {
         return actorDAO.getById(id);
     }
 
-    @Override
     public List<Actor> getActorByName(String name) {
         return actorDAO.getByName(name);
+    }
+
+    public void saveOrUpdateActor(Actor actor) {
+        actorDAO.saveOrUpdate(actor);
+    }
+
+    public void deleteActor(Long id) {
+        actorDAO.delete(id);
     }
 
     @Override
@@ -45,13 +52,12 @@ public class ActorServiceImpl implements ActorService{
     }
 
     @Override
-    public void saveOrUpdateActor(Actor actor) {
-        actorDAO.saveOrUpdate(actor);
+    public List<Actor> getActorByMovieId(Long movieId) {
+        return actorDAO.getByMovieId(movieId);
     }
 
     @Override
-    public void deleteActor(Long id) {
-        actorDAO.delete(id);
+    public Actor addMoviesToActor(List<Movie> movies, Long actorId) {
+        return actorDAO.addMoviesToActor(movies, actorId);
     }
-    
 }

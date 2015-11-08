@@ -13,7 +13,10 @@ $.ajax({
 
     html += "<div class='movie'>Name:" + movie.name + "</a><br/>";
     html += "Director: " + movie.director + "<br/>";
-    html += "Genre: " + movie.genre + "</div>";
+    html += "Genre: " + movie.genre + "<br/>"+"</div>";
+    html += "Gross income: " + movie.grossIncome +"<br/>"+ "</div>";
+    html += "Gross rating: " + movie.rating +"<br/>"+ "</div>";
+    html += "Release date: " + movie.releaseDate + "</div>";
     html += "<br/> <h1>Actors:</h1> <div id='actorsDiv'>";
     _.each(movie.actors, function (actor) {
 

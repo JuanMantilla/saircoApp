@@ -1,0 +1,38 @@
+<div>    
+    <div class="col-lg-5 list-group">
+        <h1>Movies:</h1>
+        <div>
+
+            <div ng-repeat="movie in movies" class="list-group-item">
+                <div class="row-action-primary">
+                    <i class="mdi-action-theaters"></i>
+                </div>
+                <div class="row-content">                   
+                    <h2><a href="#/movie/{{movie.id}}" class="list-group-item" >{{movie.name}}</a></h2>
+                    <h4>Release date: <b>{{movie.releaseDate}}</b></h4>
+                    <h4>Director: <b>{{movie.director}}</b></h4>
+                    <h4>Rating: <b>{{movie.rating}}</b></h4>
+                </div>                
+                <div class="list-group-separator"> </div>
+            </div>
+        </div>        
+    </div>
+    <div class="col-lg-5 list-group">
+        <h1>Actors:</h1>
+        <div >
+
+            <div ng-repeat="actor in actors" class="list-group-item">
+                <div class="row-action-primary">
+                    <i class="mdi-action-theaters"></i>
+                </div>
+                <div class="row-content">                    
+                    <h2><a href="#/actor/{{actor.id}}" class="list-group-item">{{actor.lastName}}</a></h2>                    
+                    <h4 class="center">Name: <b>{{actor.name}}</b></h4>
+                    <h4>Gender: <b>{{actor.gender}}</b></h4>
+                    <h4>Birthdate: <b>{{actor.nacimiento}}</b></h4>
+                </div>
+                <div class="list-group-separator"></div>
+            </div>
+        </div>        
+    </div>
+</div>

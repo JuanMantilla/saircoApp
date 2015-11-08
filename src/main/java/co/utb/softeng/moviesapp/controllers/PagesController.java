@@ -20,18 +20,21 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class PagesController {
     
+    private final String apiUrl = "http://localhost:8080/SpringMoviesApp/";
+    
     @RequestMapping(value = "/")
     public ModelAndView getHomePage() {
         Map<String, Object> params = new HashMap<>();
-        params.put("apiUrl", "http://localhost:8080/SpringMoviesApp/");
+        params.put("apiUrl", apiUrl);
         return new ModelAndView("index", params);
     }
     
     @RequestMapping(value = "/movies/{movieId}")
     public ModelAndView getMoviePage(@PathVariable Long movieId) {
         Map<String, Object> params = new HashMap<>();
-        params.put("apiUrl", "http://localhost:8080/SpringMoviesApp/");
+        params.put("apiUrl", apiUrl);
         params.put("movieId", movieId);
         return new ModelAndView("movie", params);
     }
 }
+

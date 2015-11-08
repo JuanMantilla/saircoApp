@@ -9,7 +9,6 @@ import co.utb.softeng.moviesapp.dao.MovieDAO;
 import co.utb.softeng.moviesapp.entities.Actor;
 import co.utb.softeng.moviesapp.entities.Movie;
 import java.util.List;
-import javax.persistence.FetchType;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Session;
@@ -107,19 +106,17 @@ public class MovieDAOImpl implements MovieDAO{
         Movie movie = (Movie)session.get(Movie.class, movieId);
         
         //Lado dominante es Movie
-        movie.getActors().addAll(actors);
+        movie.setActors(actors);
         session.saveOrUpdate(movie);
         
         
 //      Si el lado dominante fuese Actor
-//      for(Actor a : actors) {
-//            Actor actor = (Actor)session.merge(a);
-//            actor.getMovies().add(movie);
+//     for(Actor a : actors) {
+//            Movie movies = (Movie)session.merge(a);
+//            movies.getActors().add(a);
 //            
 //        }
         return movie;
     }
-    
-    
     
 }

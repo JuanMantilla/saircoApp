@@ -24,4 +24,5 @@ public interface MovieDAO {
     public void saveOrUpdate(Movie movie);
     public void delete(Long id);
     
+    
 }

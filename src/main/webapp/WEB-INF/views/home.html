@@ -1,0 +1,23 @@
+<div>
+    <hr>
+    <h1>Movies:</h1>
+    <div class="row">
+
+        <div class="col-lg-5 list-group">
+
+            <div ng-repeat="movie in movies" class="list-group-item">
+                <div class="row-action-primary">
+                    <i class="mdi-action-theaters"></i>
+                </div>
+                <div class="row-content">
+                    <div class="least-content">{{movie.releaseDate}}</div>
+                    <h2><a href="#/movie/{{movie.id}}">{{movie.name}}</a></h2>
+                    <h4>Director: <b>{{movie.director}}</b></h4>
+                    <h4>Rating: <b>{{movie.rating}}</b></h4>
+                </div>
+                <div class="list-group-separator"></div>
+            </div>
+        </div>
+
+    </div>
+</div>

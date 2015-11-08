@@ -18,20 +18,21 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author William
+ * @author Juan Mantilla
  */
 @Entity
 @Table(name = "ACTORS")
 public class Actor implements Serializable {
+    
     @Id
     @GeneratedValue
     private Long id;
-    private String firstName;
+    private String name;
     private String lastName;
     private String gender;
     @Temporal(value=TemporalType.DATE)
-    private Date birthdate;
-    @ManyToMany(mappedBy="actors")
+    private Date nacimiento;
+    @ManyToMany
     private List<Movie> movies;
 
     public Long getId() {
@@ -41,21 +42,28 @@ public class Actor implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public String getFirstName() {
-        return firstName;
+    
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
-
+    
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastName(String name) {
+        this.lastName = name;
+    }
+    public Date getNacimiento() {
+        return nacimiento;
+    }
+
+    public void setNacimiento(Date nacimiento) {
+        this.nacimiento = nacimiento;
     }
 
     public String getGender() {
@@ -66,14 +74,6 @@ public class Actor implements Serializable {
         this.gender = gender;
     }
 
-    public Date getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
-    }
-
     public List<Movie> getMovies() {
         return movies;
     }
@@ -81,6 +81,9 @@ public class Actor implements Serializable {
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
     }
+
+    
+    
     
     
     

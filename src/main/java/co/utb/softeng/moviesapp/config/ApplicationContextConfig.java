@@ -65,7 +65,7 @@ public class ApplicationContextConfig extends WebMvcConfigurerAdapter{
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/moviesdb");
         dataSource.setUsername("root");
-        dataSource.setPassword("");
+        dataSource.setPassword("asdasd123");
         return dataSource;
     }
 

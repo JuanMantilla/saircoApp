@@ -6,6 +6,7 @@
 package co.utb.softeng.moviesapp.controllers;
 
 import co.utb.softeng.moviesapp.entities.Actor;
+import co.utb.softeng.moviesapp.entities.Movie;
 import co.utb.softeng.moviesapp.services.ActorService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *
  * @author William
  */
+
 @Controller
 @RequestMapping("/actor")
 public class ActorsController {
@@ -28,29 +30,52 @@ public class ActorsController {
     ActorService actorService;
     
     
-    @RequestMapping(value={"/", ""}, method = RequestMethod.GET)
+    @RequestMapping(value={"/",""}, method = RequestMethod.GET)
     public @ResponseBody List<Actor> getAllActors() {
         return actorService.getAllActors();
     }
     
-    @RequestMapping(value={"/{id}"}, method = RequestMethod.GET)
+    @RequestMapping(value="/{id}", method = RequestMethod.GET)
     public @ResponseBody Actor getActorById(@PathVariable Long id) {
-        Actor a = actorService.getActorById(id);
-        return a;
+        return actorService.getActorById(id);
     }
     
-    @RequestMapping(value={"/", ""}, method = RequestMethod.PUT)
+    @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
+    public @ResponseBody List<Actor> getMovieByName(@PathVariable String name) {
+        return actorService.getActorByName(name);
+    }
+    
+    @RequestMapping(value = "/actor/{actorId}", method = RequestMethod.GET)
+    public @ResponseBody List<Actor> getMovieByActorId(@PathVariable Long actorId) {
+        return actorService.getActorByMovieId(actorId);
+    }
+    
+    @RequestMapping(value = "/actor/name/{name}", method = RequestMethod.GET)
+    public @ResponseBody List<Actor> getMovieByActorName(@PathVariable String name) {
+        return actorService.getActorByMovieName(name);
+    }
+    
+    @RequestMapping(value = "/", method = RequestMethod.PUT)
     public @ResponseBody Actor createActor(@RequestBody Actor actor) {
         actorService.saveOrUpdateActor(actor);
         return actor;
     }
     
-    @RequestMapping(value={"/", ""}, method = RequestMethod.POST)
+    @RequestMapping(value = "/",method = RequestMethod.POST) 
     public @ResponseBody Actor updateActor(@RequestBody Actor actor) {
-        actorService.saveOrUpdateActor(actor);
-        return actor;
+        actorService.saveOrUpdateActor(actor); 
+        return actor;          
     }
     
+    @RequestMapping(value="/{id}/movies", method = RequestMethod.POST)
+    public @ResponseBody Actor addMoviesToActor(@RequestBody List<Movie> movies, 
+            @PathVariable Long actorId) {
+        return actorService.addMoviesToActor(movies, actorId);
+    }
     
-    
+    @RequestMapping(value = "/",method = RequestMethod.DELETE) 
+    public @ResponseBody Actor deleteMovie(@RequestBody Actor actor) {
+        actorService.deleteActor(actor.getId());
+        return actor;          
+    }
 }
