@@ -20,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class PagesController {
     
-    private final String apiUrl = "http://localhost:8080/SpringMoviesApp/";
+    private final String apiUrl = "http://localhost:8080/SaircoApp/";
     
     @RequestMapping(value = "/")
     public ModelAndView getHomePage() {
@@ -28,13 +28,11 @@ public class PagesController {
         params.put("apiUrl", apiUrl);
         return new ModelAndView("index", params);
     }
-    
-    @RequestMapping(value = "/movies/{movieId}")
-    public ModelAndView getMoviePage(@PathVariable Long movieId) {
+    @RequestMapping(value = "/salones/{salonId}")
+    public ModelAndView getSalonPage(@PathVariable Long salonId) {
         Map<String, Object> params = new HashMap<>();
         params.put("apiUrl", apiUrl);
-        params.put("movieId", movieId);
-        return new ModelAndView("movie", params);
+        params.put("salonId", salonId);
+        return new ModelAndView("salon", params);
     }
 }
-

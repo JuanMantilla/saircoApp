@@ -1,0 +1,12 @@
+{
+    "elements": {
+        "uib-tab": {},
+        "uib-tabset": {},
+        "uib-tab-heading": {}
+    },
+    "attributes": {
+        "ui-grid": {
+            "context": "div"
+        }
+    }
+}

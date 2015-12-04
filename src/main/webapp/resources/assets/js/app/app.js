@@ -5,30 +5,56 @@
  */
 
 
-var springMoviesApp = angular.module("springMoviesApp", [
+var saircoApp = angular.module("saircoApp", [
     'ngRoute',
     'ui.bootstrap',
-    'springMoviesAppServices',
-    'springMoviesAppControllers',
-    'currencyMask',
+    'ui.grid',
+    'saircoAppServices',
+    'saircoAppControllers',
     'lodash'
 ]);
 
 
-springMoviesApp.config(['$routeProvider', 
-    function($routeProvider) {
+saircoApp.config(['$routeProvider', '$httpProvider',
+    function($routeProvider, $httpProvider) {
         $routeProvider.
-                when('/movie/:movieId', {
-                    templateUrl: 'assets/js/app/views/movie.html',
-                    controller: 'movieController'
-                }).when('/actor/:actorId', {
-                    templateUrl: 'assets/js/app/views/actor.html',
-                    controller: 'actorController'
+                when('/salon/:salonId', {
+                    templateUrl: 'assets/js/app/views/salon.html',
+                    controller: 'salonController'
+                }).when('/equipo/:equipoId', {
+                    templateUrl: 'assets/js/app/views/equipo.html',
+                    controller: 'equipoController'
                 }).when('/', {
                     templateUrl: 'assets/js/app/views/home.html',
                     controller: 'homeController'
+                }).when('/admin', {
+                templateUrl: 'assets/js/app/views/admin.html',
+                controller: 'adminController'
+                }).when('/user', {
+                templateUrl: 'assets/js/app/views/user.html',
+                controller: 'userController'
+                }).when('/login', {
+                    templateUrl: 'assets/js/app/views/login.html',
+                    controller: 'loginController'
+                }).when('/equipo/:equipoId/editar', {
+                    templateUrl: 'assets/js/app/views/saveOrUpdateEquipo.html',
+                    controller: 'adminController'
                 }).otherwise({
-                    redirectTo: '/'
-                });
+                            redirectTo: '/'
+                        });
         
-}]);
+
+        $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+
+    }])
+        .run(['$rootScope','$location','authService', function ($rootScope, $location, authService) {
+            $rootScope.$on("$routeChangeStart", function (event, next, current) {
+                if (next.templateUrl === "assets/js/app/views/admin.html") { 
+                    authService.login().then(function(response) {
+                        if (!response.success) 
+                            $location.path('/login');
+                    });
+                    
+                }
+            });
+        }]);

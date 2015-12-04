@@ -1,0 +1,25 @@
+<div class="panel col-md-7">
+    <br>
+    <form name="mainLoginForm" class="form-horizontal">
+        <fieldset>
+            <legend>Login</legend>
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+
+                    <div class="form-group">
+                        <label for="userField" class="control-label">User</label>
+                        <input ng-model="user.userName" type="text" class="form-control" id="userField" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passwordField" class="control-label">Password</label>
+                        <input ng-model="user.password" type="password" class="form-control" id="passwordField" required>
+                    </div>
+                    <button type="button" class="btn btn-primary" ng-disabled="mainLoginForm.$invalid" ng-click="login(user)">Login</button>
+
+                </div>
+            </div>
+        </fieldset>
+
+    </form>
+</div>

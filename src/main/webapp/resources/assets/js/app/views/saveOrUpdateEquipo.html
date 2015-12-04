@@ -1,0 +1,38 @@
+<div class="panel">
+    <div class="panel-body">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1>Nuevo nombre del equipo: {{equipo.name}}</h1>
+                    <h1>Nueva ubicacion del equipo: {{equipo.ubicacion}}</h1>
+                    
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <form name="updateEquipoForm" novalidate >
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="nombre" class="control-label">Nuevo nombre: </label>
+                                <input id="name" class="form-control" type="text" ng-model="equipo.name" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="ubication" class="control-label">Nueva ubicación </label>
+                                    <input id="ubicacion" class="form-control" type="text" ng-model="equipo.ubicacion" required/>
+                                </div>
+                        </div>
+                    </div>
+                </form>
+                <button type="button" class="btn btn-primary" ng-disabled="updateEquipoForm.$invalid" ng-click="adminController.saveOrUpdateEquipo(equipo.name, equipo.ubicacion)">Actualizar</button>
+            </div>
+            
+        </div>
+    </div>
+</div>

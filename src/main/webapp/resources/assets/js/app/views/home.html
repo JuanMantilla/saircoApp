@@ -1,38 +1,34 @@
-<div>    
-    <div class="col-lg-5 list-group">
-        <h1>Movies:</h1>
-        <div>
-
-            <div ng-repeat="movie in movies" class="list-group-item">
+<div>
+    <hr>
+    
+    <div class="row">
+        
+        <div class="col-lg-6 list-group">
+            <h1>Salones:</h1>
+            <div ng-repeat="salon in salones" class="list-group-item">
                 <div class="row-action-primary">
-                    <i class="mdi-action-theaters"></i>
+                    <i class="mdi-action-home"></i>
                 </div>
-                <div class="row-content">                   
-                    <h2><a href="#/movie/{{movie.id}}" class="list-group-item" >{{movie.name}}</a></h2>
-                    <h4>Release date: <b>{{movie.releaseDate}}</b></h4>
-                    <h4>Director: <b>{{movie.director}}</b></h4>
-                    <h4>Rating: <b>{{movie.rating}}</b></h4>
+                <div class="row-content">
+                    <div class="least-content"></div>
+                    <h2><a href="#/salon/{{salon.id}}">{{salon.name}}</a></h2>
+                    <h4><i class="mdi-maps-place"></i>{{salon.ubicacion}}</h4>                    
                 </div>                
-                <div class="list-group-separator"> </div>
-            </div>
-        </div>        
-    </div>
-    <div class="col-lg-5 list-group">
-        <h1>Actors:</h1>
-        <div >
-
-            <div ng-repeat="actor in actors" class="list-group-item">
+                <div class="list-group-separator"></div>
+            </div>            
+        </div>
+        <div class="col-lg-6 list-group">
+            <h1>Equipos:</h1>
+            <div ng-repeat="equipo in equipos" class="list-group-item">
                 <div class="row-action-primary">
-                    <i class="mdi-action-theaters"></i>
+                    <i class="mdi-hardware-desktop-mac"></i>
                 </div>
                 <div class="row-content">                    
-                    <h2><a href="#/actor/{{actor.id}}" class="list-group-item">{{actor.lastName}}</a></h2>                    
-                    <h4 class="center">Name: <b>{{actor.name}}</b></h4>
-                    <h4>Gender: <b>{{actor.gender}}</b></h4>
-                    <h4>Birthdate: <b>{{actor.nacimiento}}</b></h4>
+                    <h2><a href="#/equipo/{{equipo.id}}">{{equipo.name}}</a></h2>
+                    <h4><i class="mdi-maps-place"></i>{{equipo.ubicacion}}</h4>
                 </div>
                 <div class="list-group-separator"></div>
             </div>
-        </div>        
+        </div>
     </div>
 </div>

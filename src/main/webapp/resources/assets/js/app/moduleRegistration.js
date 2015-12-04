@@ -5,8 +5,8 @@
  */
 
 
-angular.module('springMoviesAppControllers',[]);
-angular.module('springMoviesAppServices',[]);
+angular.module('saircoAppControllers',[]);
+angular.module('saircoAppServices',[]);
 
 angular.module('lodash',[]).factory('_', function(){
         return window._;

@@ -3,8 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>co.utb.softeng</groupId>
-    <artifactId>SpringMoviesApp</artifactId>
-    <name>SpringMoviesApp</name>
+    <artifactId>SaircoApp</artifactId>
+    <name>SaircoApp</name>
     <packaging>war</packaging>
     <version>1.0.0-BUILD-SNAPSHOT</version>
 	
@@ -92,7 +92,19 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.30</version>		
-        </dependency> 
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>4.0.3.RELEASE</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>4.0.3.RELEASE</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -154,7 +166,7 @@
                 <configuration>
                     <scanIntervalSeconds>0</scanIntervalSeconds>
                     <webApp>
-                        <contextPath>/SpringMoviesApp</contextPath>
+                        <contextPath>/SaircoApp</contextPath>
                     </webApp>
                 </configuration>
             </plugin>

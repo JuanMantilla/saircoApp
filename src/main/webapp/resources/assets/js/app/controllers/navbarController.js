@@ -4,55 +4,40 @@
  * and open the template in the editor.
  */
 
-var controllerModule = angular.module('springMoviesAppControllers');
+var controllerModule = angular.module('saircoAppControllers');
 
-controllerModule.controller('navbarController', ['$scope', '$uibModal', '$location', 'movieService', 'actorService',
-    function ($scope, $uibModal, $location, movieService, actorService) {
-        $scope.addMovie = function () {
-            $uibModal.open({
-                templateUrl: 'addMovieModal',
-                controller: 'navbarController.addMovieModal',
-                size: 'md'
-            }).result.then(function (m) {
-                movieService.createMovie(m);
-                $location.path('/');
-            });
+controllerModule.controller('navbarController', ['$scope', '$rootScope', '$location', 'authService',
+    function ($scope, $rootScope, $location, authService) {
+
+        $scope.user = {
+            userName: "",
+            password: ""
         };
-        $scope.addActor = function () {
-            $uibModal.open({
-                templateUrl: 'addActorModal',
-                controller: 'navbarController.addActorModal',
-                size: 'md'
-            }).result.then(function (a) {
-                actorService.createActor(a);
-                $location.path('/');
-            });
+        
+        $scope.login = function() {
+            $location.path('/login');
         };
+
+        $scope.logout = function() {
+            authService.logout();
+            $rootScope.loggedIn = false;
+            $location.path('/');
+        };
+
+
+        authService.login({}).then(function (response) {
+
+            if (response.success) {
+                $rootScope.loggedIn = true;
+            } else {
+                $rootScope.loggedIn = false;
+
+            }
+        });
+        
+        
+
     }]);
 
-controllerModule.controller('navbarController.addMovieModal', ['$scope', '$modalInstance', function ($scope, $modalInstance) {
-        $scope.movie = {};
 
-        $scope.cancel = function () {
-            $modalInstance.dismiss('cancel');
-        };
-
-        $scope.ok = function () {
-
-            $modalInstance.close($scope.movie);
-        };
-    }]);
-
-controllerModule.controller('navbarController.addActorModal', ['$scope', '$modalInstance', function ($scope, $modalInstance) {
-        $scope.actor = {};
-
-        $scope.cancel = function () {
-            $modalInstance.dismiss('cancel');
-        };
-
-        $scope.ok = function () {
-
-            $modalInstance.close($scope.actor);
-        };
-    }]);
 

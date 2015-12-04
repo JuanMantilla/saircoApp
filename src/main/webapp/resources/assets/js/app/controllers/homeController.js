@@ -4,27 +4,27 @@
  * and open the template in the editor.
  */
 
-var controllerModule = angular.module('springMoviesAppControllers');
+var controllerModule = angular.module('saircoAppControllers');
 
-controllerModule.controller('homeController', ['$scope', 'movieService','actorService', '_', 
-    function ($scope, movieService, actorService, _) {
-        $scope.movies = [];
-        $scope.actors = [];
-        $scope.getAllMovies = function () {
-            var promise = movieService.getAllMovies();
+controllerModule.controller('homeController', ['$scope', 'salonService','equipoService', '_', 
+    function ($scope, salonService, equipoService, _) {
+        $scope.salones = [];
+        $scope.equipos = [];
+        $scope.getAllSalones = function () {
+            var promise = salonService.getAllSalones();
             promise.then(function (response) {
-                $scope.movies = response.data;
+                $scope.salones = response.data;
             });
         };      
-        $scope.getAllMovies();
+        $scope.getAllSalones();
                 
-        $scope.getAllActors = function () {
-            var promise = actorService.getAllActors();
+        $scope.getAllEquipos = function () {
+            var promise = equipoService.getAllEquipos();
             promise.then(function (response) {
-                $scope.actors = response.data;
+                $scope.equipos = response.data;
             });
         };      
-        $scope.getAllActors();
+        $scope.getAllEquipos();
     }
 ]);
 
